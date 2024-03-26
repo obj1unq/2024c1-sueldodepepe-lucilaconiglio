@@ -2,9 +2,71 @@ import pepe.*
 
 describe "Sueldo Pepe" {
 	
-	test "Test 1" {
-		//TODO: Implementame
+	test "pepe cadete, monto fijo, presentismo normal, falto 3 dias" {
+		pepe.categoria(cadete)
+		pepe.bonoResultado(fijo)
+		pepe.bonoPresentismo(normal)
+		pepe.faltas(3)
+		assert.equals(20800, pepe.sueldo())
 	}
+	 
+	 test "pepe gerente, bono porcentaje, presentismo nulo"{
+		pepe.categoria(gerente)
+		pepe.bonoResultado(porcentaje)
+		pepe.bonoPresentismo(presentismoNulo)
+		assert.equals(16500, pepe.sueldo())
+	 }
+	 
 
-	
+  	test "pepe cadete, bono porcentaje, presentismo normal" {
+		pepe.categoria(cadete)
+		pepe.bonoResultado(porcentaje)
+		pepe.bonoPresentismo(normal)
+		assert.equals(24000, pepe.sueldo())
+	}
+	 
+	 
+	  test "pepe cadete, bono porcentaje, presentismo normal, falto un dia" {
+		pepe.categoria(cadete)
+		pepe.bonoResultado(porcentaje)
+		pepe.bonoPresentismo(normal)
+		pepe.faltas(1)
+		assert.equals(23000, pepe.sueldo())
+	}
+	 
+	 
+	 test "sueldo de sofia y pepe como cadete"{
+	 	sofia.categoria(cadete)
+	 	pepe.categoria(cadete)
+	 	assert.equals(26000, sofia.sueldo())
+	 	assert.equals(20000, pepe.sueldo())	
+	 }
+	 	 
+	 test "neto vendedor cuando hay muchas ventas"{
+	 	vendedor.activarAumentoPorMuchasVentas()
+	 	assert.equals(20000, vendedor.neto())
+ 		vendedor.desactivarAumentoPorMuchasVentas()
+	 	assert.equals(16000, vendedor.neto())
+	 }
+	 
+	 
+	 test "neto del medio tiempo co categoria base gerente"{
+	 	medioTiempo.categoriaBase(gerente)
+	 	assert.equals(7500, medioTiempo.neto())
+	 }
+	 
+	 test "categoria base cadete, sueldo pepe, eresto (compañero de pepe) y roque ."{
+	 	medioTiempo.categoriaBase(cadete)
+	 	pepe.categoria(medioTiempo)
+	 	pepe.bonoResultado(porcentaje)
+	 	pepe.bonoPresentismo(demagogico)
+	 	pepe.faltas(1)
+	 	roque.bonoResultado(fijo)
+	 	ernesto.companiero(pepe)
+	 	ernesto.bonoPresentismo(ajuste)
+	 	assert.equals(11500, pepe.sueldo())
+	 	assert.equals(37800, roque.sueldo())
+	 	assert.equals(10100, ernesto.sueldo())
+	 }
+	 
 }
