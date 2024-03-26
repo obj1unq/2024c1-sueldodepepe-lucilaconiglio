@@ -34,4 +34,39 @@ describe "Sueldo Pepe" {
 		assert.equals(23000, pepe.sueldo())
 	}
 	 
+	 
+	 test "sueldo de sofia y pepe como cadete"{
+	 	sofia.categoria(cadete)
+	 	pepe.categoria(cadete)
+	 	assert.equals(26000, sofia.sueldo())
+	 	assert.equals(20000, pepe.sueldo())	
+	 }
+	 	 
+	 test "neto vendedor cuando hay muchas ventas"{
+	 	vendedor.activarAumentoPorMuchasVentas()
+	 	assert.equals(20000, vendedor.neto())
+ 		vendedor.desactivarAumentoPorMuchasVentas()
+	 	assert.equals(16000, vendedor.neto())
+	 }
+	 
+	 
+	 test "neto del medio tiempo co categoria base gerente"{
+	 	medioTiempo.categoriaBase(gerente)
+	 	assert.equals(7500, medioTiempo.neto())
+	 }
+	 
+	 test "categoria base cadete, sueldo pepe, eresto (compañero de pepe) y roque ."{
+	 	medioTiempo.categoriaBase(cadete)
+	 	pepe.categoria(medioTiempo)
+	 	pepe.bonoResultado(porcentaje)
+	 	pepe.bonoPresentismo(demagogico)
+	 	pepe.faltas(1)
+	 	roque.bonoResultado(fijo)
+	 	ernesto.companiero(pepe)
+	 	ernesto.bonoPresentismo(ajuste)
+	 	assert.equals(11500, pepe.sueldo())
+	 	assert.equals(37800, roque.sueldo())
+	 	assert.equals(10100, ernesto.sueldo())
+	 }
+	 
 }

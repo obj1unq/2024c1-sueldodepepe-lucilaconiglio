@@ -50,7 +50,7 @@ object sofia{
 	var bonoResultado = resultadoNulo
 	
 	method sueldo(){
-		return categoria.neto()  + self.resultado() 
+		return self.neto()  + self.resultado() 
 	}
 	
 	method resultado(){
@@ -90,14 +90,7 @@ object sofia{
 		bonoResultado = _bonoResultado		
 	}
  }
- 
- /*
-  * Ernesto, que trabaja junto con un compañero, que puede cambiar. El neto de Ernesto es igual al de su compañero.
-Su sueldo se calcula como neto + bono por presentismo.
-Para el bono por presentismo, usar las mismas opciones que para Pepe.
-*  Se sabe que Ernesto no falta nunca.
-  */
-  
+   
  object ernesto{
  	
  	var companiero = pepe
